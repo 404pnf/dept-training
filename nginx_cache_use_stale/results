@@ -1,0 +1,6 @@
+wrk -c300 -t10 -d30s http://0.0.0.0:8000/
+
+plan,	  	requests/second,	hits to backend
+no cache,	31,		 	1137
+cache no stale,	7271,			658
+with stale,	22361,			9
