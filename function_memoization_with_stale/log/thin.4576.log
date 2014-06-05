@@ -1,6 +1,0 @@
-Writing PID to tmp/pids/thin.4576.pid
-Using rack adapter
-[DEPRECATED] `run!` is deprecated, please use `execute` instead.
-Thin web server (v1.6.2 codename Doc Brown)
-Maximum connections set to 1024
-Listening on 0.0.0.0:4576, CTRL+C to stop
