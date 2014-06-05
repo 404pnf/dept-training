@@ -9,7 +9,7 @@ mk_db = -> n {
               n = n + 1
               n
             else
-              :no_undersand_sir
+              :no_understand_sir
             end
           }
       }
