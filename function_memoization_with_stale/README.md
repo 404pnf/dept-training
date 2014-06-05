@@ -3,17 +3,17 @@
 Yes. Oh bah Nginx stale. <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_use_stale>
 
 # Backend is slow?
-    
-    ```Ruby
-    def f
-        sleep 4
-        Time.now
-    end
-    
-    get '/' do
-        f
-    end
-    ```
+
+  ```Ruby
+  def f
+      sleep 4
+      Time.now
+  end
+
+  get '/' do
+      f
+  end
+  ```
 
 1. cache the result with function memoization.
 
@@ -39,40 +39,40 @@ Not good enough. Because function need to expose their result over http to make 
 
 # concurrent-ruby comes to resue?
 
-    ```Ruby
-    require 'sinatra'
-    require 'concurrent'
+  ```Ruby
+  require 'sinatra'
+  require 'concurrent'
 
-    def f
-      sleep 4 # slow query in db
-      Time.now
-    end
+  def f
+    sleep 4 # slow query in db
+    Time.now
+  end
 
-    #  FIXME
-    # wating for someone to include this function into a memoization gem
-    task = Concurrent::TimerTask.new(execution_interval: 5, timeout_interval: 5) { f }
+  #  FIXME
+  # wating for someone to include this function into a memoization gem
+  task = Concurrent::TimerTask.new(execution_interval: 5, timeout_interval: 5) { f }
 
-    #  FIXME
-    # name collition with sinatra run!
-    # sinatra warning: [DEPRECATED] `run!` is deprecated, please use `execute` instead.
-    task.run!
+  #  FIXME
+  # name collition with sinatra run!
+  # sinatra warning: [DEPRECATED] `run!` is deprecated, please use `execute` instead.
+  task.run!
 
-    #  BUG WTF FIXME
-    # It drove me crazy.  For the past hour I am trying to get the script to work.
-    # I couldn't without the sleep!!
-    # WHY!
-    sleep 10
+  #  BUG WTF FIXME
+  # It drove me crazy.  For the past hour I am trying to get the script to work.
+  # I couldn't without the sleep!!
+  # WHY!
+  sleep 10
 
-    get '/' do
-      "#{task.running?} : #{task.value}"
-    end
-    ```
+  get '/' do
+    "#{task.running?} : #{task.value}"
+  end
+  ```
 # Benchmark
 
-    ```bash
-    ruby app.rb
-    wrk -c300 -t10 -d30s http://0.0.0.0:4567/
-    ```
+  ```Bash
+  ruby app.rb
+  wrk -c300 -t10 -d30s http://0.0.0.0:4567/
+  ```
 
 # Even better?
 
