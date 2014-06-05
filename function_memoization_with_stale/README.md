@@ -3,15 +3,15 @@
 Yes. Oh bah Nginx stale. <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_use_stale>
 
 # Backend is slow?
-
+    
     ```Ruby
     def f
-      sleep 4
-      Time.now
+        sleep 4
+        Time.now
     end
-
+    
     get '/' do
-      f
+        f
     end
     ```
 
