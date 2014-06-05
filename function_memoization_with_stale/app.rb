@@ -10,16 +10,17 @@ def f
 end
 
 #  FIXME
-# wating for someone to include this function into a memoization gem
+# gemify this pattern
 task = Concurrent::TimerTask.new(execution_interval: 5, timeout_interval: 5) { f }
 
 #  FIXME
-# name collition with sinatra run!
+# name collision with sinatra run!
 # sinatra warning: [DEPRECATED] `run!` is deprecated, please use `execute` instead.
 task.run!
+
 #  BUG WTF FIXME
 # It drove me crazy.  For the past hour I am trying to get the script to work.
-# I couldn't without the sleep!!
+# I couldn't get it work without the sleep!!
 # WHY!
 sleep 10
 
