@@ -14,6 +14,7 @@ Yes. Oh bah Nginx stale. <http://nginx.org/en/docs/http/ngx_http_proxy_module.ht
       f
   end
   ```
+# Solutions
 
 1. cache the result with function memoization.
 
