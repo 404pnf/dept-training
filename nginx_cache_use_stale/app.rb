@@ -8,6 +8,8 @@ mk_db = -> n {
             when :val
               n = n + 1
               n
+            when :view
+              n
             else
               :no_understand_sir
             end
@@ -17,12 +19,17 @@ mk_db = -> n {
 db = mk_db.call 0
 
 get '/' do
-  sleep 3
+  sleep 10
   "#{db.call :val}\n"
 end
 
 get '/refresh' do
   db.call :reset
+  "reset counter to #{db.call :view}\n"
+end
+
+get '/current' do
+  "current value is #{db.call :view}\n"
 end
 
 

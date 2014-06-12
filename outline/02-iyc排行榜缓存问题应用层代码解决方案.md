@@ -9,3 +9,9 @@
 
 详细大纲 
 <https://github.com/404pnf/dept-training/tree/master/function_memoization_with_stale>
+
+## 借用redis和thread.new
+
+## 借用rack cache server with revalidating
+
+## 借用lua 或 mruby?
