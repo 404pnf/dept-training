@@ -1,1 +1,0 @@
-~/opt/tengine/sbin/nginx -c /Users/bai/github/dept-training/nginx-sub_filter/expire-conf/nginx.conf

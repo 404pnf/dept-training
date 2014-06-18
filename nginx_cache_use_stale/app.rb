@@ -19,7 +19,7 @@ mk_db = -> n {
 db = mk_db.call 0
 
 get '/' do
-  sleep 10
+  #sleep 10
   "#{db.call :val}\n"
 end
 
